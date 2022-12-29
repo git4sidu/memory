@@ -27,11 +27,11 @@ int main()
         int temp;
         while (running)
         {
-            system("cls");
+            system("clear");
             wypiszMenu(wrongInput);
             wrongInput = false;
 
-            scanf_s("%d", &temp);
+            scanf("%d", &temp);
             printf("\n");
             getchar();
 
@@ -44,7 +44,7 @@ int main()
                     break;
                 }
                 case 2: { //Wypisz Dane
-                    system("cls");
+                    system("clear");
                     Print(wsk, N);
                     printf("\n\nPress any key..");
                     getchar();
@@ -53,8 +53,8 @@ int main()
                 case 3: { //Wypisz Dane na litere
                     char letter;
                     printf("Podaj litere: ");
-                    scanf_s("%c", &letter);
-                    system("cls");
+                    scanf("%c", &letter);
+                    system("clear");
                     Print(wsk, N, letter);
                     printf("\n\nPress any key..");
                     getchar();
@@ -63,14 +63,12 @@ int main()
                 case 4: { //Usun Dane z pozycji
                     int position;
                     printf("Podaj Pozycje: ");
-                    scanf_s("%d", &position);
+                    scanf("%d", &position);
                     Remove(position, wsk, N);
                     break;
                 }
                 case 5: { //Usun Dane po nazwie
                     pobierzZnaki(buf);
-                    printf("Podaj Pozycje: ");
-                    scanf_s("%d", &position);
                     RemoveByName(buf, wsk, N);
                     break;
                 }
@@ -110,7 +108,7 @@ void Add(char* x, char**& tab, unsigned& n)
     if (tmptab != NULL) {
         tab = tmptab;
         tab[n] = (char*)malloc(BUF_SIZE * sizeof(char));
-        memcpy(tab[n], x, BUF_SIZE);
+        strcpy(tab[n], x);
         n++;
     } else {
         printf("Brak pamięci!\n");
@@ -259,7 +257,7 @@ void pobierzZnaki(char *output)
     char temp;
     for (int i = 0; i < BUF_SIZE - 1; i++ )
     {
-        scanf_s("%c", &temp);
+        scanf("%c", &temp);
         if (temp != 10) {
             output[i] = temp;
             output[i+1] = '\0';
